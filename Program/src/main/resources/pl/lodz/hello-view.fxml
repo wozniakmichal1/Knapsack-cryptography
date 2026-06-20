@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="560.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lodz.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <TabPane prefHeight="520.0" prefWidth="760.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Szyfrowanie Plecakowe">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="490.0" prefWidth="760.0">
+                            <children>
+                                <Label layoutX="20.0" layoutY="15.0" style="-fx-font-weight: bold;" text="Rodzaj operacji:" />
+                                <RadioButton fx:id="cypherRadio" layoutX="150.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#InputDataChange" selected="true" text="Szyfrowanie">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="operationType" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="decypherRadio" layoutX="260.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#InputDataChange" text="Deszyfrowanie" toggleGroup="$operationType" />
+                                <Separator layoutX="20.0" layoutY="37.0" prefWidth="720.0" />
+                                <Label layoutX="20.0" layoutY="55.0" style="-fx-font-weight: bold;" text="Parametry klucza:" />
+                                <Label layoutX="20.0" layoutY="80.0" text="Długość wektora n (np. 64, 128):" />
+                                <TextField fx:id="vectorLengthInput" layoutX="280.0" layoutY="76.0" prefHeight="26.0" prefWidth="140.0" promptText="Wartość dziesiętna" />
+                                <Label layoutX="20.0" layoutY="113.0" text="Wektor publiczny:" />
+                                <TextField fx:id="publicVectorInput" layoutX="140.0" layoutY="109.0" prefHeight="26.0" prefWidth="430.0" promptText="Wartości wektora publicznego (oddzielone przecinkami)" />
+                                <Label layoutX="20.0" layoutY="146.0" text="Mnożnik (wartość W):" />
+                                <TextField fx:id="mulInput" layoutX="140.0" layoutY="142.0" prefHeight="26.0" prefWidth="430.0" promptText="Wartość mnożnika mul" />
+                                <Label layoutX="20.0" layoutY="179.0" text="Modulo (wartość M):" />
+                                <TextField fx:id="modInput" layoutX="140.0" layoutY="175.0" prefHeight="26.0" prefWidth="430.0" promptText="Wartość modułu mod" />
+                                <Button fx:id="loadPublicKeyButton" layoutX="590.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#LoadPublicKey" text="Wczytaj klucz z pliku" />
+                                <Button fx:id="saveKeyButton" layoutX="590.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#SaveKey" text="Zapisz klucz do pliku" />
+                                <Separator layoutX="20.0" layoutY="208.0" prefWidth="720.0" />
+                                <Label layoutX="20.0" layoutY="225.0" style="-fx-font-weight: bold;" text="Dane do zaszyfrowania:" />
+                                <Label layoutX="430.0" layoutY="225.0" style="-fx-font-weight: bold;" text="Dane zaszyfrowane:" />
+                                <TextArea fx:id="plaintextInput" layoutX="20.0" layoutY="240.0" prefHeight="160.0" prefWidth="390.0" wrapText="true" />
+                                <TextArea fx:id="cyphertextInput" layoutX="430.0" layoutY="240.0" prefHeight="160.0" prefWidth="320.0" wrapText="true" />
+                                <Label layoutX="20.0" layoutY="413.0" style="-fx-font-weight: bold;" text="Źródło danych:" />
+                                <RadioButton fx:id="keyboardInput" layoutX="130.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#InputDataChange" selected="true" text="Wprowadzanie ręczne">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="inputCypher" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="fileInputData" layoutX="280.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#InputDataChange" text="Wczytaj z pliku" toggleGroup="$inputCypher" />
+                                <Button fx:id="loadPlaintextFileButton" disable="true" layoutX="20.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#LoadFileOperation" text="Wybierz plik do zaszyfrowania" />
+                                <Button fx:id="loadCypherFileButton" disable="true" layoutX="430.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#LoadCypherOperation" text="Wybierz plik do odszyfrowania" />
+                                <Button fx:id="savePlaintextFileButton" layoutX="20.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#SaveFile" text="Zapisz odszyfrowany plik" />
+                                <Button fx:id="saveCypherFileButton" layoutX="430.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#SaveCypher" text="Zapisz zaszyfrowany plik" />
+                                <Button fx:id="operationButton" layoutX="330.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#DoOperation" prefHeight="40.0" prefWidth="80.0" style="-fx-font-weight: bold; -fx-font-size: 13px;" text="Wykonaj" />
+                                <Label fx:id="statusLabel" layoutX="20.0" layoutY="498.0" prefWidth="720.0" style="-fx-text-fill: #444444; -fx-font-style: italic;" text="" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
